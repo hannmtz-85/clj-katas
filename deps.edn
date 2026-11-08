@@ -1,0 +1,8 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.12.1"}}
+ :aliases
+ {;; clojure -M:test                         all tests
+  ;; clojure -M:test --focus katas.arrays-test/two-sum-sorted   one test
+  :test {:extra-paths ["test"]
+         :extra-deps {lambdaisland/kaocha {:mvn/version "1.91.1392"}}
+         :main-opts ["-m" "kaocha.runner"]}}}
