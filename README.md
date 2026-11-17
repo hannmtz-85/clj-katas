@@ -22,6 +22,8 @@ You need the [Clojure CLI](https://clojure.org/guides/install_clojure) and a JDK
 
 ## Exercises
 
+**Progress:** 1 solved so far: `move-zeroes`.
+
 Time is a suggestion for a timed session; difficulty is relative to the other exercises here.
 
 | Technique | Exercise (function) | Difficulty | Time |

@@ -2,3 +2,6 @@
 .lsp/
 .clj-kondo/.cache/
 target/
+.calva/
+.nrepl-port
+.vscode/
