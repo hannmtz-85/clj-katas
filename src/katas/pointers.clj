@@ -28,7 +28,16 @@
     (move-zeroes [0 1 0 3 12]) ;=> [1 3 12 0 0]
     (move-zeroes [0])          ;=> [0]"
   [nums]
-  (throw (ex-info "Not solved yet" {})))
+  (->> (range (count nums))
+       (reduce (fn [{:keys [v z] :as state} i]
+                 (if (zero? (v i))
+                   state
+                   {:v (assoc v
+                              z (v i)
+                              i (v z))
+                    :z (inc z)}))
+               {:v nums :z 0})
+       (:v)))
 
 (defn two-sum-sorted
   "`nums` is sorted in ascending order. Return `[i j]`, with i < j, such that the numbers at those indexes add up
@@ -47,3 +56,9 @@
     (valid-palindrome-2? \"abc\")    ;=> false"
   [s]
   (throw (ex-info "Not solved yet" {})))
+
+
+(comment
+
+
+  :.)
