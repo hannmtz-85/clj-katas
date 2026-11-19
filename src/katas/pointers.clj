@@ -46,7 +46,15 @@
     (two-sum-sorted [2 7 11 15] 9) ;=> [0 1]
     (two-sum-sorted [1 2 3] 100)   ;=> nil"
   [nums target]
-  (throw (ex-info "Not solved yet" {})))
+  (loop [i 0
+         j (- (count nums) 1)]
+    (if
+     (<= j i) nil
+     (let [sum (+ (nums i) (nums j))]
+       (cond
+         (= sum target) [i j]
+         (> sum target) (recur i (dec j))
+         :else (recur (inc i) j))))))
 
 (defn valid-palindrome-2?
   "Say whether the string `s` is a palindrome, or becomes one after deleting at most one character.
@@ -59,6 +67,5 @@
 
 
 (comment
-
 
   :.)
