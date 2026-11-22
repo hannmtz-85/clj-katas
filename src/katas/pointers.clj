@@ -20,7 +20,21 @@
     (happy? 19) ;=> true   (19 -> 82 -> 68 -> 100 -> 1)
     (happy? 2)  ;=> false"
   [n]
-  (throw (ex-info "Not solved yet" {})))
+  (letfn [(sum-square [x]
+            (loop [m x
+                   result 0]
+              (if (= m 0)
+                result
+                (let [digit (rem m 10)]
+                  (recur (quot m 10)
+                         (+ result (* digit digit)))))))]
+    (and (> n 0)
+         (loop [slow (sum-square n)
+                fast (sum-square slow)]
+           (if (= slow fast)
+             (= slow 1)
+             (recur (sum-square slow)
+                    (-> fast sum-square sum-square)))))))
 
 (defn move-zeroes
   "Return the vector `nums` with every 0 moved to the end and the other numbers in their original order.
@@ -63,9 +77,24 @@
     (valid-palindrome-2? \"xabcba\") ;=> true
     (valid-palindrome-2? \"abc\")    ;=> false"
   [s]
-  (throw (ex-info "Not solved yet" {})))
+  (letfn [(is-palindrome [s i j]
+            (loop [start i
+                   end j]
+              (cond
+                (> start end) true
+                (not= (get s start) (get s end)) false
+                :else (recur (inc start) (dec end)))))]
+    (loop [i 0
+           j (-> s count dec)]
+      (cond
+        (> i j) true
+        (= (get s i) (get s j)) (recur (inc i) (dec j))
+        :else (or (is-palindrome s (inc i) j)
+                  (is-palindrome s i (dec j)))))))
 
 
 (comment
 
-  :.)
+  (valid-palindrome-2? "xabcba")
+  
+  )
