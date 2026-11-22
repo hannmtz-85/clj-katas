@@ -22,7 +22,7 @@ You need the [Clojure CLI](https://clojure.org/guides/install_clojure) and a JDK
 
 ## Exercises
 
-**Progress:** 4 solved so far: `move-zeroes`, `two-sum-sorted`, `happy?` and `valid-palindrome-2?`.
+**Progress:** 5 solved so far: `move-zeroes`, `two-sum-sorted`, `happy?`, `valid-palindrome-2?` and `duplicate-number`.
 
 Time is a suggestion for a timed session; difficulty is relative to the other exercises here.
 

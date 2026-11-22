@@ -11,7 +11,17 @@
     (duplicate-number [3 1 3 4 2]) ;=> 3
     (duplicate-number [3 3 3 3 3]) ;=> 3"
   [nums]
-  (throw (ex-info "Not solved yet" {})))
+  (loop [slow (nums 0)
+         fast (nums slow)]
+    (if (= slow fast)
+      (loop [i 0
+             j slow]
+        (if (= i j)
+          i
+          (recur (nums i)
+                 (nums j))))
+      (recur (nums slow)
+             (nums (nums fast))))))
 
 (defn happy?
   "Replace a positive number by the sum of the squares of its digits, and repeat. If the process reaches 1 the
@@ -95,6 +105,11 @@
 
 (comment
 
-  (valid-palindrome-2? "xabcba")
+  (deref (future (duplicate-number [1 3 4 2 2])) 2000 :timeout)
+
+  (duplicate-number [2 4 4 4 3 5])
+  (duplicate-number [1 3 4 2 2]) ;=> 2
+  (duplicate-number [3 1 3 4 2]) ;=> 3
+  (duplicate-number [3 3 3 3 3]) ;=> 3"
   
   )
